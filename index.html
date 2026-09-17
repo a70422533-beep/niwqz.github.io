@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 16px 60px;
+    padding: 20px 14px 40px;
     position: relative;
     overflow-x: hidden;
   }
@@ -25,78 +25,99 @@
     position: fixed;
     inset: 0;
     background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80') center/cover;
-    filter: blur(20px) brightness(0.3);
+    filter: blur(30px) brightness(0.25);
     z-index: -1;
   }
   
-  .container { width: 100%; max-width: 420px; }
+  .container { width: 100%; max-width: 400px; }
   
+  /* ===== ВЕРХНЯЯ КАРТОЧКА ===== */
   .card {
-    background: rgba(20, 20, 20, 0.55);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 26px 20px 22px;
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 22px;
+    padding: 0 18px 22px;
     text-align: center;
     position: relative;
+    overflow: hidden;
+  }
+  
+  /* фоновая полоска сверху карточки (как у Фараона) */
+  .card-bg {
+    height: 110px;
+    margin: 0 -18px 0;
+    background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80') center/cover;
+    filter: brightness(0.5) blur(1px);
+    position: relative;
+  }
+  .card-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(18,18,18,0) 0%, rgba(18,18,18,0.6) 70%, rgba(18,18,18,1) 100%);
   }
   
   .badge-top {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    font-size: 12px;
-    color: #bbb;
-    background: rgba(255, 255, 255, 0.06);
+    top: 14px;
+    right: 14px;
+    font-size: 11px;
+    color: #ccc;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
     padding: 5px 12px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2;
   }
   
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    margin: 6px auto 18px;
+    margin: -48px auto 16px;
     background: linear-gradient(135deg, #2a2a2a, #111);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 38px;
+    font-size: 36px;
     font-weight: 700;
     color: #555;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    border: 3px solid #151515;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.6);
+    position: relative;
+    z-index: 1;
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
   
   .nick {
     display: inline-block;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
-    padding: 8px 22px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 30px;
-    margin-bottom: 16px;
-    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
   }
   
   .tags {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 7px;
     flex-wrap: wrap;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   .tags span {
-    font-size: 13px;
-    color: #ccc;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 6px 14px;
+    font-size: 12.5px;
+    color: #c8c8c8;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 6px 13px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -105,18 +126,19 @@
   .tags span svg { width: 13px; height: 13px; fill: #999; }
   
   .desc {
-    font-size: 14px;
-    color: #aaa;
+    font-size: 13.5px;
+    color: #999;
     font-family: 'Courier New', monospace;
-    min-height: 22px;
-    margin: 16px 0;
-    letter-spacing: 0.3px;
+    min-height: 20px;
+    margin: 18px 0 14px;
+    letter-spacing: 0.2px;
   }
   .desc::after {
     content: '|';
     color: #666;
     animation: blink 1s infinite;
     margin-left: 2px;
+    font-weight: 100;
   }
   @keyframes blink { 0%,50% {opacity:1} 51%,100% {opacity:0} }
   
@@ -125,66 +147,163 @@
     align-items: center;
     gap: 6px;
     font-size: 13px;
-    color: #999;
-    margin-bottom: 20px;
+    color: #888;
+    margin-bottom: 18px;
   }
-  .country svg { width: 14px; height: 14px; fill: #888; }
+  .country svg { width: 13px; height: 13px; fill: #777; }
   
   .socials {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
   .socials a {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.045);
     border: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.2s;
   }
-  .socials a:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
-  .socials svg { width: 22px; height: 22px; fill: #ddd; }
+  .socials a:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+  .socials svg { width: 20px; height: 20px; fill: #d5d5d5; }
   
-  .player {
-    margin-top: 14px;
-    background: rgba(20, 20, 20, 0.55);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 16px;
+  /* ===== БЛОК SPOTIFY (заглушка) ===== */
+  .spotify {
+    margin-top: 12px;
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 22px;
+    padding: 14px 16px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 13px;
   }
-  .player-cover {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #444, #111);
+  .sp-cover {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2a2a2a, #0d0d0d);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    cursor: pointer;
+    font-size: 20px;
+    position: relative;
   }
-  .player-cover svg { width: 22px; height: 22px; fill: #ddd; }
-  .player-info { flex: 1; text-align: left; }
-  .player-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-  audio { width: 100%; height: 28px; filter: invert(1) hue-rotate(180deg); }
+  .sp-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: -3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1ed760;
+    border: 2px solid #121212;
+  }
+  .sp-info { flex: 1; text-align: left; overflow: hidden; }
+  .sp-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 3px;
+  }
+  .sp-name svg { width: 12px; height: 12px; fill: #1d9bf0; }
+  .sp-track { font-size: 11.5px; color: #888; }
+  .sp-btn {
+    font-size: 10px;
+    color: #ccc;
+    background: rgba(255,255,255,0.07);
+    padding: 7px 11px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  
+  /* ===== ПЛЕЕР ===== */
+  .player {
+    margin-top: 12px;
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 22px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  .pl-cover {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #333, #0d0d0d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    overflow: hidden;
+  }
+  .pl-cover svg { width: 20px; height: 20px; fill: #ddd; }
+  .pl-info { flex: 1; text-align: left; }
+  .pl-title { font-size: 13.5px; font-weight: 600; }
+  .pl-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .pl-btn svg { width: 14px; height: 14px; fill: #fff; }
+  
+  .eq {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+    margin-right: 6px;
+  }
+  .eq span {
+    width: 2.5px;
+    background: #999;
+    border-radius: 1px;
+    animation: eq 1s infinite ease-in-out;
+  }
+  .eq span:nth-child(1) { animation-delay: 0s; }
+  .eq span:nth-child(2) { animation-delay: 0.2s; }
+  .eq span:nth-child(3) { animation-delay: 0.4s; }
+  .eq span:nth-child(4) { animation-delay: 0.1s; }
+  @keyframes eq {
+    0%, 100% { height: 4px; }
+    50% { height: 14px; }
+  }
 </style>
 </head>
 <body>
   <div class="container">
     
+    <!-- ВЕРХНЯЯ КАРТОЧКА -->
     <div class="card">
       <div class="badge-top">dev.niwqz</div>
+      <div class="card-bg"></div>
       
       <div class="avatar" id="avatar">N</div>
       
@@ -192,7 +311,7 @@
       
       <div class="tags">
         <span><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>Developer</span>
-        <span><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Verified</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l2.4 2.4 3.3-.6.9 3.2 3.2.9-.6 3.3L23 13l-2.4 2.4.6 3.3-3.2.9-.9 3.2-3.3-.6L12 24l-2.4-2.4-3.3.6-.9-3.2-3.2-.9.6-3.3L2 13l2.4-2.4-.6-3.3 3.2-.9.9-3.2 3.3.6L12 2z"/></svg>Verified</span>
       </div>
       
       <div class="tags">
@@ -208,76 +327,98 @@
       </div>
       
       <div class="socials">
-        <a href="https://discord.com/users/niwqz1" target="_blank" title="Discord">
+        <a href="https://discord.com/users/niwqz1" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0016.5 3l-.3.5c1.4.3 2 .7 2.8 1.2a13.4 13.4 0 00-11.9 0c.7-.5 1.5-.9 2.8-1.2L9.6 3a19.8 19.8 0 00-3.9 1.4C2.6 8.7 2 12.9 2.2 17a19.9 19.9 0 006 3l1.2-1.7c-.7-.3-1.3-.6-1.9-1l.5-.4a14.2 14.2 0 0012 0l.5.4c-.6.4-1.2.7-1.9 1l1.2 1.7a19.9 19.9 0 006-3c.3-4.8-.6-9-2.5-12.6zM9.5 14.4c-1.2 0-2.1-1-2.1-2.3s.9-2.3 2.1-2.3 2.2 1 2.1 2.3c0 1.3-.9 2.3-2.1 2.3zm5 0c-1.2 0-2.1-1-2.1-2.3s.9-2.3 2.1-2.3 2.2 1 2.1 2.3c0 1.3-.9 2.3-2.1 2.3z"/></svg>
         </a>
-        <a href="https://t.me/niwqz" target="_blank" title="Telegram">
+        <a href="https://t.me/niwqz" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M9.8 15.7l-.3 4.3c.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.2-15c.3-1.2-.4-1.7-1.3-1.4L1.6 9.8c-1.2.5-1.2 1.1-.2 1.4l4.7 1.5 11-6.9c.5-.3 1-.2.6.3l-8.9 8z"/></svg>
         </a>
-        <a href="https://www.tiktok.com/@niwqz1" target="_blank" title="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M19.6 6.78a5.2 5.2 0 01a-3.1-3.4h-2.45v11.9a2.9 2.9 .0 11-2-2.8V9.5 5.5 0 104.4 5.4V8.9a7.5 7.5 0 004.1 1.2V7.7c-.3 0-.7-.1-1-.2z"/></svg>
+        <a href="https://www.tiktok.com/@niwqz1" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.6 6.7a5.2 5.2 0 01-3.1-3.4h-2.4v11.9a2.9 2.9 0 11-2-2.8V9.8a5.5 5.5 0 104.4 5.4V8.9a7.5 7.5 0 004.1 1.2V7.7c-.3 0-.7-.1-1-.2z"/></svg>
         </a>
       </div>
     </div>
     
+    <!-- SPOTIFY ЗАГЛУШКА -->
+    <div classло="spotify">
+      <div class="sp-cover">🎧</div>
+чи      <div class="sp-info">
+        <div class,="sp-name">
+          niwqz
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 2.4 3.3-.6.9 3.2 3.2.9-.6 3.3L23 13l-2.4 2.4.6 3.3-3.2.9-.9 3.2-3.3-.6L12 24l-2.4-2.4-3.3.6-.9-3.2-3.2-.9.6-3.3L2 13l2.4-2.4-.6-3.3 3.2-.9.9-3.2 3.3.6L12 2z"/></svg>
+        </div>
+        <div class="sp-track">Listening to lofi beat</div>
+      </div>
+      <div class="sp-btn">SPOTIFY</div>
+    </div>
+    
+    <!-- ПЛЕЕР -->
     <div class="player">
-      <div class="player-cover" id="playBtn">
+      <div class="pl-cover" id="playBtn">
         <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
-      <div class="player-info">
-        <div class="player-title">do u love me?</div>
+      <div class="pl-info">
+        <div class="pl-title">do u love me?</div>
         <audio id="audio" loop>
           <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
         </audio>
+      </div>
+      <div class="eq">
+        <span style="height:6px"></span>
+        <span style="height:10px"></span>
+        <span style="height:5px"></span>
+        <span style="height:12px"></span>
+      </div>
+      <div class="pl-btn" id="bigPlay">
+        <svg id="bigIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
     </div>
     
   </div>
   
   <script>
+    // Печатающийся текст
     const text = "just a guy, tired of life";
     const el = document.getElementById('typed');
-    let i = 0;
-    let deleting = false;
+    let i = 0, deleting = false;
     
     function type() {
       if (!deleting) {
         el.textContent = text.substring(0, i + 1);
         i++;
-        if (i === text.length) {
-          deleting = true;
-          setTimeout(type, 2000);
-          return;
-        }
-        setTimeout(type, 80);
+        if (i === text.length) { deleting = true; setTimeout(type, 2200); return; }
+        setTimeout(type, 75);
       } else {
         el.textContent = text.substring(0, i - 1);
         i--;
-        if (i === 0) {
-          deleting = false;
-          setTimeout(type, 500);
-          return;
-        }
-        setTimeout(type, 40);
+        if (i === 0) { deleting = false; setTimeout(type, 600); return; }
+        setTimeout(type, 35);
       }
     }
     type();
     
+    // Плеер
     const audio = document.getElementById('audio');
     const btn = document.getElementById('playBtn');
     const icon = document.getElementById('playIcon');
+    const bigBtn = document.getElementById('bigPlay');
+    const bigIcon = document.getElementById('bigIcon');
     let playing = false;
     
-    btn.addEventListener('click', () => {
+    function toggle() {
       if (playing) {
         audio.pause();
         icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        bigIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
       } else {
         audio.play();
         icon.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+        bigIcon.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
       }
       playing = !playing;
-    });
+    }
+    btn.addEventListener('click', toggle);
+    bigBtn.addEventListener('click', toggle);
   </script>
 </body>
 </html>
